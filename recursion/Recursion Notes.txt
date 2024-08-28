@@ -1,0 +1,139 @@
+Pattern 1:
+==========
+
+# This is an important pattern in recursion where we pass a argument to the function
+# this argument holds the final ans
+# we return this argument in the base condition
+
+def findAllIndexes(arr, target, index, ans_arr):
+    if index == len(arr):
+        return ans_arr
+
+    if arr[index] == target:
+        ans_arr.append(index)
+
+    return findAllIndexes(arr, target, index+1, ans_arr)
+
+
+arr = [1, 2, 3, 4, 4, 9]
+print(findAllIndexes(arr, 4, 0, []))
+
+
+
+Pattern 2:
+==========
+
+# In this pattern, we are comparing the array elements separately
+# depending on the result of comparison, we are calling function
+# at the end we are returning False because if condition is true, it would have called the function
+def isSorted(arr, index):
+    if index == len(arr)-1:
+        return True
+
+    if arr[index] <= arr[index+1]:
+        return isSorted(arr, index+1)
+
+    return False
+
+
+Pattern 3:
+==========
+# In this patter, we are comparing array elements and calling the function but joining these 2 conditions
+# using AND operator
+# this is more of a short cut pattern and we don't have a return statement at the end
+
+def isSorted2(arr, index):
+    if index == len(arr) - 1:
+        return True
+
+    return arr[index] <= arr[index+1] and isSorted2(arr, index+1)
+
+
+arr = [1, 2, 4, 5, 71, 8, 10]
+#arr = [20, 20, 45, 89, 89, 90]
+#arr = [20, 20, 78, 98, 99, 97]
+print(isSorted(arr, 0))
+print(isSorted2(arr, 0))
+
+Pattern 4:
+==========
+
+# pattern 1, where we don't pass 2nd argument (steps)
+# In this pattern we just return the value that is computed outside of the function call
+# return 1 + function_call
+
+def stepsToReduceNumber(num):
+    if num == 0:
+        return 0
+
+    if num % 2 != 0:
+        return 1 + stepsToReduceNumber(num - 1)
+    else:
+        return 1 + stepsToReduceNumber(num // 2)
+
+
+Pattern 5:
+==========
+
+# in this pattern we pass 2nd argument of steps
+# in this pattern we compute the values inside the function call
+# return function_call(arg1, val + 1)
+
+def stepsToReduceNumber2(num, steps):
+    if num == 0:
+        return steps
+
+    if num % 2 == 0:
+        return stepsToReduceNumber2(num/2, steps+1)
+    return stepsToReduceNumber2(num-1, steps+1)
+
+num = 123
+print(stepsToReduceNumber(num))
+print(stepsToReduceNumber2(num, 0))
+
+
+# one more pattern in recursion is about defining variable or array inside the function block
+# if we define a variable inside a function block then everytime we call that function that variable is new
+# and it does not carry forward any values from previous function call neither does he knows anything about future
+# function calls
+
+# Example to be provided
+
+
+
+
+# here is another pattern for recursion
+# we can either use a loop and call a recursive function or we can use 2 calls to recursive function
+# following are 2 variations
+
+# variation 1: using single recursive call and a loop
+def bubbleSort(n):
+    if n == 1:
+        return
+    swap = False
+    # using for loop
+    for i in range(n-1):
+        if arr[i] > arr[i+1]:
+            arr[i], arr[i+1] = arr[i+1], arr[i]
+            swap = True
+    if not swap:
+        return
+    bubbleSort(n-1)
+
+
+# variation 2: using 2 recursive call
+def bubbleSort2(arr, last, curr):
+    if last == 0:
+        return
+
+    if curr < last:
+        if arr[curr] > arr[curr+1]:
+            arr[curr], arr[curr+1] = arr[curr+1], arr[curr]
+        bubbleSort2(arr, last, curr+1)
+    else:
+        bubbleSort2(arr, last-1, 0)
+
+
+arr = [2, 5, 4, 8, 1]
+#bubbleSort(len(arr))
+bubbleSort2(arr, len(arr)-1, 0)
