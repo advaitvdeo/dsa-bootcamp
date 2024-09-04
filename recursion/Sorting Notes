@@ -1,0 +1,83 @@
+# bubble sort
+
+In Bubble Sort algorithm,
+
+traverse from left and compare adjacent elements and the higher one is placed at right side.
+In this way, the largest element is moved to the rightmost end at first.
+This process is then continued to find the second largest and place it and so on until the data is sorted.
+
+Example Code (Recursion):
+
+def bubbleSort(n):
+    if n == 1:
+        return
+    swap = False
+    # using for loop
+    for i in range(n-1):
+        if arr[i] > arr[i+1]:
+            arr[i], arr[i+1] = arr[i+1], arr[i]
+            swap = True
+    if not swap:
+        return
+    bubbleSort(n-1)
+
+
+# insertion sort
+
+Insertion sort is a simple sorting algorithm that works by building a sorted array one element at a time. It is considered an ” in-place ” sorting algorithm, meaning it doesn’t require any additional memory space beyond the original array.
+
+To achieve insertion sort, follow these steps:
+
+We start with second element of the array as first element in the array is assumed to be sorted.
+Compare second element with the first element and check if the second element is smaller then swap them.
+Move to the third element and compare it with the second element, then the first element and swap as necessary to put it in the correct position among the first three elements.
+Continue this process, comparing each element with the ones before it and swapping as needed to place it in the correct position among the sorted elements.
+Repeat until the entire array is sorted.
+
+
+Meaning that if we find an element which is less then its previous element, we need to insert that element in correct place
+we need to move all the elements one position to right to make place for this element to get inserted
+
+def insertionSort(arr, index):
+    if index == len(arr):
+        return
+
+    for i in range(index):
+        if arr[i] > arr[index]:
+            index_val = arr[index]
+            for j in range(index, i, -1):
+                arr[j] = arr[j-1]
+            arr[i] = index_val
+
+    insertionSort(arr, index+1)
+
+# selection Sort
+
+Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest)
+element from the unsorted portion of the list and moving it to the sorted portion of the list.
+
+The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it
+with the first element of the unsorted part. This process is repeated for the remaining unsorted portion until the entire list is sorted.
+
+
+def selectionSort(arr, pos):
+    if pos == len(arr)-1:
+        return
+
+    for i in range(pos+1, len(arr)):
+        if arr[i] < arr[pos]:
+            arr[i], arr[pos] = arr[pos], arr[i]
+
+    selectionSort(arr, pos+1)
+
+arr = [25, 64, 12, 22, 11]
+#selectionSort(arr, 0)
+#print(arr)
+
+
+# merge sort
+
+
+
+# Quick Sort
+

@@ -97,9 +97,45 @@ print(stepsToReduceNumber2(num, 0))
 # and it does not carry forward any values from previous function call neither does he knows anything about future
 # function calls
 
-# Example to be provided
+# In this case, we need to return the current value computed from the base condition
+# we then combine the local values to generate the ans
+
+# Example - Subset question
 
 
+def subsetList(s, str_arr, ans):
+    if not s:
+        if str_arr:
+            ans.append(str_arr)
+        return
+
+    subsetList(s[1:], str_arr + s[0], ans)
+    subsetList(s[1:], str_arr, ans)
+
+
+def subsetList2(s, str_arr):
+    if not s:
+        if str_arr:
+            return [str_arr]
+        return []
+
+    left = subsetList2(s[1:], str_arr + s[0])
+    right = subsetList2(s[1:], str_arr)
+
+    return left + right
+
+s = "abc"
+ans = []
+subsetList(s, "", ans)
+print(ans)
+print(subsetList2(s, ""))
+
+In first example, we have an extra argument called ans which is send from outside and ans appended all the generated value
+in each of the local call
+
+In second example, we are using a local variable str_arr, which is changing in each function call.
+In base condition we return this local variable.
+We combine these local variables and return at the end to create final ans which will be returned to main.
 
 
 # here is another pattern for recursion
