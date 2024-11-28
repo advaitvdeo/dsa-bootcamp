@@ -1,53 +1,48 @@
-def display(board):
-    for row in range(len(board)):
-        for col in range(len(board[0])):
-            if board[row][col]:
-                print("Q", end=' ')
-            else:
-                print("X", end=' ')
-        print("")
-
-
 def isSafe(board, row, col):
-    # vertical
-    for i in range(row):
-        if board[i][col]:
+    # going above
+    for r in range(row):
+        if board[r][col]:
             return False
 
-    # diagonal left
+    # going diag left
     maxLeft = min(row, col)
     for i in range(1, maxLeft+1):
         if board[row-i][col-i]:
             return False
 
-    # diagonal right
+    # going diag right
     maxRight = min(row, len(board)-col-1)
     for i in range(1, maxRight+1):
         if board[row-i][col+i]:
             return False
-
     return True
 
 
+def displayBoard(board):
+    for row in board:
+        for col in row:
+            if col:
+                print("Q ", end = "")
+            else:
+                print("X ", end = "")
+        print(" ", end = "\n")
 
-def nQueens(board, row):
+
+def NQueens(board, row):
     if row == len(board):
-        display(board)
+        displayBoard(board)
         print("\n")
         return 1
 
     count = 0
-    # we place the queen at every row and column
-    # rows can be traversed using recursion and column can be traversed using loop
-
-    for col in range(len(board[0])):
+    for col in range(len(board)):
         if isSafe(board, row, col):
             board[row][col] = True
-            count += nQueens(board, row+1)
-            board[row][col] = False  # backtracking
+            count += NQueens(board, row+1)
+            board[row][col] = False
 
     return count
 
 
 board = [[0 for i in range(4)] for j in range(4)]
-print(nQueens(board, 0))
+print(NQueens(board, 0))

@@ -15,5 +15,6 @@ def subTriangle(arr):
     # be in reverse direction
     print(arr)
 
+
 arr = [1, 2, 3, 4, 5]
 subTriangle(arr)

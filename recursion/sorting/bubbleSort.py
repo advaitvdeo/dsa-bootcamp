@@ -38,8 +38,20 @@ def bubbleSort2(arr, last, curr):
         bubbleSort2(arr, last-1, 0)
 
 
+def bubblesort3(arr, row, col):
+    if row == 0:
+        return
+
+    if col < row:
+        if arr[col] > arr[col+1]:
+            arr[col], arr[col+1] = arr[col+1], arr[col]
+        bubblesort3(arr, row, col+1)
+    bubblesort3(arr, row-1, 0)
+
+
 arr = [2, 5, 4, 8, 1]
 #bubbleSort(len(arr))
-bubbleSort2(arr, len(arr)-1, 0)
+#bubbleSort2(arr, len(arr)-1, 0)
+bubblesort3(arr, len(arr)-1, 0)
 
 print(arr)

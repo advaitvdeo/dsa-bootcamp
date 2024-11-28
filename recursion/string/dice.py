@@ -2,8 +2,7 @@ def dice(arr, target, ds):
     if target == 0:
         print(ds)
         return
-    if target < 0:
-        return
+
 
     for i in range(len(arr)):
         if arr[i] <= target:
@@ -12,8 +11,7 @@ def dice(arr, target, ds):
 def diceList(arr, target, ds):
     if target == 0:
         return [ds]
-    if target < 0:
-        return []
+
 
     ans = []
     for i in range(len(arr)):
