@@ -1,0 +1,16 @@
+1) binary tree search pattern
+
+one of the pattern we discovered is how to search efficiently when we are able to create a binary tree
+example:
+ - https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/?envType=problem-list-v2&envId=recursion&favoriteSlug=&difficulty=MEDIUM
+ - https://leetcode.com/problems/k-th-symbol-in-grammar/?envType=problem-list-v2&envId=recursion&favoriteSlug=&difficulty=MEDIUM
+
+2) We have another pattern of fibonacci series
+
+306. Additive numbers - https://leetcode.com/problems/additive-number/description/?envType=problem-list-v2&envId=backtracking&difficulty=MEDIUM
+842. Split Array into Fibonacci Sequence - https://leetcode.com/problems/split-array-into-fibonacci-sequence/description/?envType=problem-list-v2&envId=backtracking&difficulty=MEDIUM
+
+3) Permutation variation
+
+1079 Letter Tile possibilities - https://leetcode.com/problems/letter-tile-possibilities/description/?envType=problem-list-v2&envId=backtracking&difficulty=MEDIUM
+This is a variation of permutation where chars in any order is possible
